@@ -1,0 +1,7 @@
+.DS_Store
+doom/local.el
+.local/
+*.elc
+*.eln
+*~
+.env
