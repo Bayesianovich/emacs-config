@@ -56,6 +56,7 @@
        :lang
        (cc +lsp +tree-sitter)
        emacs-lisp
+       ess
        json
        latex
        markdown

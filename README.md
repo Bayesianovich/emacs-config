@@ -1,6 +1,6 @@
 # CyberCode · Doom Emacs 配置
 
-面向 macOS 的个人 Emacs 配置：CyberCode ASCII 启动页、FiraCode 字体、Vim 风格操作、Neotree、右侧终端、C++ / Python 开发、Org 和 LaTeX。常用键位按作者的 LazyVim 使用习惯统一。没有邮件模块。
+面向 macOS 的个人 Emacs 配置：CyberCode ASCII 启动页、FiraCode 字体、Vim 风格操作、Neotree、右侧终端、C++ / Python / R 开发、Org 和 LaTeX。常用键位按作者的 LazyVim 使用习惯统一。没有邮件模块。
 
 ## 一键安装（macOS）
 
@@ -63,6 +63,7 @@ emacs
 
 - **C++**：clangd、clang-format、CMake、LLDB 来自开发工具和 LLVM。`SPC c R` 仅编译当前文件，CMake 项目在终端运行 `cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug` 和 `cmake --build build`。
 - **Python**：uv 管理项目 `.venv`，Pyright 分析，Ruff 格式化，debugpy 调试。项目依赖仍需自行执行 `uv sync`。不带 `--deps` 安装时需自行安装 uv、Ruff、Pyright。
+- **R / ESS**：`--deps` 会安装 R；ESS 随 Doom `:lang ess` 安装。打开 `.R` 文件后按 `SPC o r` 启动 R 控制台，按 `SPC m l` 发送当前行，`SPC m r` 发送选中区域，`SPC m b` 发送整个缓冲区。不带 `--deps` 时请自行安装 R。R 语言服务器未默认启用，R 的 LSP 补全与诊断需要额外安装 `languageserver` 并将模块改为 `(ess +lsp)`。
 - **调试**：Python 适配器优先使用安装脚本创建的独立环境。C++ 断点启动受本机 LLDB 和系统权限影响，尚未验证所有 GUI 环境。
 - **LaTeX / PDF**：模块已启用，但大体积 TeX 发行版没有自动安装。需要时安装 MacTeX（例如 `brew install --cask mactex-no-gui`）；PDF Tools 可能还需要 `brew install poppler automake pkgconf` 后按 doctor 提示编译。
 - **AI**：`SPC a c` Claude、`SPC a o c` Codex、`SPC a g t` Gemini。CLI 需自行安装登录。已有会话用 `SPC ,` 切换；当前打开函数会再次发送启动命令。

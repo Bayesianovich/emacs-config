@@ -26,7 +26,7 @@ if (( DEPS )); then
   [[ "$(uname -s)" == Darwin ]] || { echo '--deps currently supports macOS only.' >&2; exit 1; }
   command -v brew >/dev/null || { echo 'Install Homebrew first: https://brew.sh' >&2; exit 1; }
   xcode-select -p >/dev/null 2>&1 || { echo 'Run xcode-select --install, complete it, then retry.' >&2; exit 1; }
-  brew install emacs git ripgrep fd cmake libtool make llvm python uv node lazygit
+  brew install emacs git ripgrep fd cmake libtool make llvm python uv node lazygit r
   brew install --cask font-fira-code-nerd-font
   brew install pyright
   uv tool install ruff
@@ -64,6 +64,6 @@ if [[ -n "${BACKUP:-}" && -f "$BACKUP/local.el" ]]; then
   cp "$BACKUP/local.el" "$DEST/local.el"
 fi
 export DOOMDIR="$DEST" EMACSDIR="$CORE"
-"$CORE/bin/doom" -y install --no-config --no-env
-"$CORE/bin/doom" -y sync
+"$CORE/bin/doom" -! install --no-config --no-env
+"$CORE/bin/doom" -! sync
 printf '\nInstalled. Restart Emacs. Run %s/bin/doom doctor to inspect optional dependencies.\n' "$CORE"
