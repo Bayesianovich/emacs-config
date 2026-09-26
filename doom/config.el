@@ -15,10 +15,16 @@
         (project-root project))
       default-directory))
 
+(defun my/terminal-directory ()
+  "Return the current file's directory, or this buffer's directory."
+  (if-let* ((file (buffer-file-name)))
+      (file-name-directory file)
+    default-directory))
+
 (defun my/vterm-right (&optional command buffer-name)
   (interactive)
   (require 'vterm)
-  (let* ((default-directory (my/project-root))
+  (let* ((default-directory (my/terminal-directory))
          (buffer (get-buffer-create (or buffer-name "*vterm-right*")))
          (window (or (get-buffer-window buffer)
                      (split-window-right (floor (* 0.58 (window-total-width)))))))
